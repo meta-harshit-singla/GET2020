@@ -12,15 +12,15 @@ public class JobScheduler
 	
 	/**
 	 * sortarr method is used to sort array in ascending order according to their arrival time
-	 * @param rowssize depicts the size of the row
+	 * @param rowsSize depicts the size of the row
 	 * @param localarr depicts the array which is to be worked upon
 	 * @return the sorted array
 	 */
-	int[][] sortarr(int rowssize,int localarr[][])
+	int[][] sortarr(int rowsSize,int localarr[][])
 	{
-		for(int i=0;i<rowssize;i++)
+		for(int i=0;i<rowsSize;i++)
 		{
-			for(int j=i+1;j<rowssize;j++)
+			for(int j=i+1;j<rowsSize;j++)
 			{
 				if(localarr[i][0]>localarr[j][0])
 				{
@@ -92,14 +92,14 @@ public class JobScheduler
 	 */
 	double averageWaitingTime(int waitingarr[])
 	{
-	    int totalwaitingtime=waitingarr[0];
-	    double averagewaitingtime=0.0;
+	    int totalWaitingtime=waitingarr[0];
+	    double averageWaitingtime=0.0;
 	    for(int i=1;i<waitingarr.length;i++)
 	    {
-	        totalwaitingtime+=waitingarr[i];
+	        totalWaitingtime+=waitingarr[i];
 	    }
-	    averagewaitingtime=(double)totalwaitingtime/(waitingarr.length);
-	    return averagewaitingtime ;
+	    averageWaitingtime=(double)totalWaitingtime/(waitingarr.length);
+	    return averageWaitingtime ;
 	}
 	
 	/**
@@ -123,15 +123,15 @@ public class JobScheduler
 		JobScheduler obj1=new JobScheduler();
 		System.out.println("Enter the total number of processes:");
         Scanner s=new Scanner(System.in);
-        int rowsize;
+        int rowSize;
         boolean flag=true;
         do
         {   
-            rowsize=s.nextInt();
+            rowSize=s.nextInt();
             try
             {
                 
-                if(rowsize<0)
+                if(rowSize<0)
                     throw new ArithmeticException("Enter positive number");
             }
             catch(ArithmeticException e)
@@ -145,33 +145,33 @@ public class JobScheduler
                 System.out.println("Wrong input");
             }
         }while(!flag);
-        int btime,atime;
-        int[][] arr=new int[rowsize][2];
-        for(int i=0;i<rowsize;i++)
+        int burstTime,arrivalTime;
+        int[][] arr=new int[rowSize][2];
+        for(int i=0;i<rowSize;i++)
         {
             for(int j=0;j<obj1.colsize;j++)
             {
                 System.out.println("Enter the arrival time:");
-                atime=s.nextInt();
-                arr[i][j]=atime;
+                arrivalTime=s.nextInt();
+                arr[i][j]=arrivalTime;
                 j++;
                 System.out.println("Enter the burst time:");
-                btime=s.nextInt();
-                arr[i][j]=btime;
+                burstTime=s.nextInt();
+                arr[i][j]=burstTime;
             }
         
         }
          s.close();
-		 arr=obj1.sortarr(rowsize,arr);
-		 int completiontimearr[]=new int[rowsize];
-		 completiontimearr=obj1.calculateCompletionTime(arr, completiontimearr);
-		 int turnaroundtimearr[]=new int[rowsize];
-		 turnaroundtimearr=obj1.calculateTurnAroundTime(arr, turnaroundtimearr, completiontimearr);
-		 int waitingtimearr[]=new int[rowsize];
-		 waitingtimearr=obj1.calculateWaitingTime(arr, waitingtimearr, turnaroundtimearr);
+		 arr=obj1.sortarr(rowSize,arr);
+		 int completionTimeArr[]=new int[rowSize];
+		 completionTimeArr=obj1.calculateCompletionTime(arr, completionTimeArr);
+		 int turnaroundtimearr[]=new int[rowSize];
+		 turnAroundTimeArr=obj1.calculateTurnAroundTime(arr, turnAroundTimeArr, completionTimeArr);
+		 int waitingTimeArr[]=new int[rowSize];
+		 waitingTimeArr=obj1.calculateWaitingTime(arr, waitingTimeArr, TurnAroundTimearr);
 		 System.out.println("Following are the processes:\n");
 		 System.out.println("Arrival Time\t  Burst Time\n");
-		 for(int i=0;i<rowsize;i++)
+		 for(int i=0;i<rowSize;i++)
 		 {
 		     for(int j=0;j<=obj1.colsize;j++)
 		     {
@@ -179,20 +179,20 @@ public class JobScheduler
 		     }
 		     System.out.println("\n");
 		 }
-		 for(int i=0;i<rowsize;i++)
+		 for(int i=0;i<rowSize;i++)
 		 {
-		     System.out.println("\nCompletion time for Process "+(i+1)+"= "+completiontimearr[i]);
+		     System.out.println("\nCompletion time for Process "+(i+1)+"= "+completionTimeArr[i]);
 		 }
-		 for(int i=0;i<rowsize;i++)
+		 for(int i=0;i<rowSize;i++)
          {
-             System.out.println("\nWaiting time for Process "+(i+1)+"= "+waitingtimearr[i]);
+             System.out.println("\nWaiting time for Process "+(i+1)+"= "+waitingTimeArr[i]);
          }
-		 for(int i=0;i<rowsize;i++)
+		 for(int i=0;i<rowSize;i++)
          {
-             System.out.println("\nTurnaround time for Process "+(i+1)+"= "+turnaroundtimearr[i]);
+             System.out.println("\nTurnaround time for Process "+(i+1)+"= "+turnAroundTimeArr[i]);
          }
-		 System.out.println("\nAverage Waiting time: "+obj1.averageWaitingTime(waitingtimearr));
-		 System.out.println("\nMaximum Waiting time: "+obj1.maxWaitingTime(waitingtimearr));
+		 System.out.println("\nAverage Waiting time: "+obj1.averageWaitingTime(waitingTimeArr));
+		 System.out.println("\nMaximum Waiting time: "+obj1.maxWaitingTime(waitingTimeArr));
 	}
 
 }
