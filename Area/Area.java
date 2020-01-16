@@ -97,9 +97,13 @@ public class Area
                         break;
                 }
             }
+            catch(ArithmeticException e)
+            {
+                System.out.println("Invalid input!!!");
+            }
             catch(Exception e)
             {
-                System.out.println("Invalid integer value");
+                System.out.println("Invalid integer value!!!!");
             }
         }
     }
