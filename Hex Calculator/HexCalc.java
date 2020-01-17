@@ -24,10 +24,7 @@ public class HexCalc implements GeneralisedCalculator
     {
         int firstDecimalNumber=Integer.parseInt(this.convertToDecimal(firstHexaNumber)),secondDecimalNumber=Integer.parseInt(this.convertToDecimal(secondHexaNumber));
         int addDecimalNumber=(firstDecimalNumber+secondDecimalNumber);
-        String addHexadecimalnumbers=Integer.toString(addDecimalNumber);
-       
-        addHexadecimalnumbers=convertToHexaDecimal(addHexadecimalnumbers);
-        return (addHexadecimalnumbers);
+        return (convertToHexaDecimal(Integer.toString(addDecimalNumber)));
     }
     
     /**
@@ -40,18 +37,13 @@ public class HexCalc implements GeneralisedCalculator
     public String subtractNumbers(String firstHexaNumber,String secondHexaNumber)
     {
         int firstDecimalNumber=Integer.parseInt(this.convertToDecimal(firstHexaNumber)),secondDecimalNumber=Integer.parseInt(this.convertToDecimal(secondHexaNumber)),subtractDecimalNumber=(firstDecimalNumber-secondDecimalNumber);
-        String subtractHexadecimalnumbers=null;
         if(subtractDecimalNumber<0)
         {
-            subtractHexadecimalnumbers=Integer.toString(-1*subtractDecimalNumber);
-            subtractHexadecimalnumbers=convertToHexaDecimal(subtractHexadecimalnumbers);
-            return ("-"+subtractHexadecimalnumbers);
+           return ("-"+convertToHexaDecimal(Integer.toString(-1*subtractDecimalNumber)));
         }
         else if(subtractDecimalNumber>0)
         {
-            subtractHexadecimalnumbers=Integer.toString(subtractDecimalNumber);
-            subtractHexadecimalnumbers=convertToHexaDecimal(subtractHexadecimalnumbers);
-            return (subtractHexadecimalnumbers);
+           return (convertToHexaDecimal(Integer.toString(subtractDecimalNumber)));
         }
         else
             return "0";
@@ -67,9 +59,7 @@ public class HexCalc implements GeneralisedCalculator
     public String multiplyNumbers(String firstHexaNumber,String secondHexaNumber)
     {
         int firstDecimalNumber=Integer.parseInt(this.convertToDecimal(firstHexaNumber)),secondDecimalNumber=Integer.parseInt(this.convertToDecimal(secondHexaNumber)),multiplyDecimalNumber=(firstDecimalNumber*secondDecimalNumber);
-        String multiplyHexadecimalnumbers=Integer.toString(multiplyDecimalNumber);
-        multiplyHexadecimalnumbers=convertToHexaDecimal(multiplyHexadecimalnumbers);
-        return (multiplyHexadecimalnumbers);
+        return (convertToHexaDecimal(Integer.toString(multiplyDecimalNumber)));
     }
     
     /**
@@ -82,9 +72,7 @@ public class HexCalc implements GeneralisedCalculator
     public String divideNumbers(String firstHexaNumber,String secondHexaNumber)
     {
         int firstDecimalNumber=Integer.parseInt(this.convertToDecimal(firstHexaNumber)),secondDecimalNumber=Integer.parseInt(this.convertToDecimal(secondHexaNumber)),divideDecimalNumber=(firstDecimalNumber/secondDecimalNumber);
-        String divideHexadecimalnumbers=Integer.toString(divideDecimalNumber);
-        divideHexadecimalnumbers=convertToHexaDecimal(divideHexadecimalnumbers);
-        return (divideHexadecimalnumbers);
+        return (convertToHexaDecimal(Integer.toString(divideDecimalNumber)));
     }
     
     /**
@@ -115,7 +103,8 @@ public class HexCalc implements GeneralisedCalculator
             {
                 return false;
             }
-        } else 
+        } 
+        else 
         {
             if (firstHexaNumber.compareTo(secondHexaNumber) > 0) 
             {
@@ -126,7 +115,6 @@ public class HexCalc implements GeneralisedCalculator
                 return false;
             }
         }
-
     }
     
     /**
@@ -164,7 +152,6 @@ public class HexCalc implements GeneralisedCalculator
         {
             return false;
         }
-
     }
     
     /**
@@ -188,23 +175,19 @@ public class HexCalc implements GeneralisedCalculator
         boolean flag=true;
         char hexanumber=checkHexanumber.charAt(1);
         int positivehexanumber=Integer.parseInt(String.valueOf(hexanumber));
-      
         if(positivehexanumber>7)
         {
             flag=true;
                 
         }
         else
-            flag=false;
-        
+            flag=false;  
         if(checkHexanumber.charAt(0)!='#' && checkHexanumber.charAt(0)!='$')
         {
-            flag=true;
-               
+            flag=true;        
         }
         for(int i=1;i<checkHexanumber.length();i++)
-        {
-            
+        {    
             for(int j=0;j<check.length;j++)
             {
                 if(checkHexanumber.charAt(i)==check[j])
@@ -217,8 +200,7 @@ public class HexCalc implements GeneralisedCalculator
                     flag=true;
                 }
             }
-        }
-        
+        }     
         return flag;
     }
     
@@ -249,8 +231,7 @@ public class HexCalc implements GeneralisedCalculator
                 decimalNumber+=hexaToInteger*Math.pow(16, j);
             }
         }
-        String decimalNUmber=Integer.toString(decimalNumber);
-       
+        String decimalNUmber=Integer.toString(decimalNumber);  
         return decimalNUmber;
     }
     
@@ -282,18 +263,15 @@ public class HexCalc implements GeneralisedCalculator
         for(int i = charArray.length-1; i >=0; i--,j++) {
             charArray[i] = list.get(j);
         }
-
         String output = new String(charArray);
         return output;
     }
-    
-    
+     
     public static void main(String[] args) 
     {
         Scanner inp=new Scanner(System.in);
         String firstHexNumber,secondHexNumber;
-        HexCalc obj1=new HexCalc();
-        
+        HexCalc obj1=new HexCalc(); 
         while(true)
         {
             int choice;
@@ -306,7 +284,6 @@ public class HexCalc implements GeneralisedCalculator
             System.out.println("6: HEXA DECIMAL TO DECIMAL ");
             System.out.println("7: DECIMAL TO HEXADECIMAL ");
             System.out.println("8: exit");
-
             System.out.println("\nEnter Your Choice: ");
             try
             {
@@ -330,7 +307,6 @@ public class HexCalc implements GeneralisedCalculator
                         }
                         System.out.println(obj1.addNumbers(firstHexNumber, secondHexNumber));
                         break;
-    
                     case 2:
                         System.out.println("Enter the positive Hexa-decimal number starting from # or $ sign: ");
                         firstHexNumber=inp.nextLine();
@@ -348,7 +324,6 @@ public class HexCalc implements GeneralisedCalculator
                         }
                         System.out.println(obj1.subtractNumbers(firstHexNumber, secondHexNumber));
                         break;
-    
                     case 3:
                         System.out.println("Enter the positive Hexa-decimal number starting from # or $ sign: ");
                         firstHexNumber=inp.nextLine();
@@ -365,8 +340,7 @@ public class HexCalc implements GeneralisedCalculator
                             continue;
                         }
                         System.out.println(obj1.multiplyNumbers(firstHexNumber, secondHexNumber));
-                        break;
-    
+                        break;    
                     case 4:
                         System.out.println("Enter the positive Hexa-decimal number starting from # or $ sign: ");
                         firstHexNumber=inp.nextLine();
@@ -383,8 +357,7 @@ public class HexCalc implements GeneralisedCalculator
                             continue;
                         }
                         System.out.println(obj1.divideNumbers(firstHexNumber, secondHexNumber));
-                        break;
-    
+                        break;   
                     case 5:
                         System.out.println("Enter the positive Hexa-decimal number starting from # or $ sign: ");
                         firstHexNumber=inp.nextLine();
@@ -403,8 +376,7 @@ public class HexCalc implements GeneralisedCalculator
                         System.out.println("first number is greater than second: "+ obj1.greaterThan(firstHexNumber, secondHexNumber));
                         System.out.println("first number is smaller than second: "+ obj1.lessThan(firstHexNumber, secondHexNumber));
                         System.out.println("first number is equal to second: "+ firstHexNumber.equals(secondHexNumber));
-                        break;
-    
+                        break;   
                     case 6:
                         System.out.println("Enter the positive Hexa-decimal number starting from # or $ sign: ");
                         firstHexNumber=inp.nextLine();
@@ -413,25 +385,20 @@ public class HexCalc implements GeneralisedCalculator
                             System.out.println("INVALID");
                             continue;
                         }
-                       
                         System.out.println(obj1.convertToDecimal(firstHexNumber));
-                        break;
-    
+                        break;  
                     case 7:
                         System.out.println("Enter decimal number:");
                         firstHexNumber=inp.nextLine();
                         obj1.convertToHexaDecimal(firstHexNumber);
                         System.out.println(obj1.convertToHexaDecimal(firstHexNumber));
-                        break;
-    
+                        break;   
                     case 8:
                         System.exit(1);
-                        break;
-                    
+                        break;                    
                     default:
                         System.out.println("Invalid choice:");
-                        break;
-    
+                        break;   
                 }
             }
             catch(Exception e)
@@ -439,8 +406,6 @@ public class HexCalc implements GeneralisedCalculator
                 System.out.println("enter valid choice");
             }
             inp.close();
-        }
-        
-    }
-    
+        }        
+    }   
 }
