@@ -18,7 +18,7 @@ public class Marksheet
         int numberOfStudents=0;
         boolean flag=true;
         Scanner input=new Scanner(System.in);
-        int firstStudent=0;
+        int student=0;
         while(flag)
         {
             try
@@ -38,14 +38,14 @@ public class Marksheet
                 System.out.println("Enter valid Integer value");      
             }
         }
-        while(firstStudent<numberOfStudents)
+        while(student<numberOfStudents)
         {
             try
             {
-                System.out.println("Enter the grade for "+(firstStudent+1)+" student:");
+                System.out.println("Enter the grade for "+(student+1)+" student:");
                 Float grade=Float.parseFloat(input.nextLine());
-                grades.put(firstStudent,grade);
-                firstStudent++;
+                grades.put(student,grade);
+                student++;
             }
             catch(ArithmeticException e)
             {
