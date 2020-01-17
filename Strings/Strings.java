@@ -12,7 +12,7 @@ public class Strings
         int length=0;
         for(char c  :givenString)
         {
-         length++;
+            length++;
         }
         return length;
     }
@@ -93,10 +93,8 @@ public class Strings
                 {
                     lengthOfMaximumWord=lengthOfWord;
                     index=i;
-                    lengthOfWord=0;
                 }
-                else
-                    lengthOfWord=0;
+                lengthOfWord=0;
             }       
             else if(j==stringLength(firstString)-1)
             {
