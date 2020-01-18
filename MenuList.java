@@ -4,62 +4,65 @@ import java.util.*;
  * @author Harshit
  *
  */
-public class MenuList {
-
-	public static List<Product> menul=new ArrayList<Product>();
-	/**
-	 * Used to Add products in the store list
-	 */
-	public static void addProductToMenu()
-	{
-		menul=new ArrayList<Product>();
-		menul.add(new Product(1,"Apple        ",20,80));
-		menul.add(new Product(2,"Banana       ",10,30));
-		menul.add(new Product(3,"Kiwi         ",20,50));
-		menul.add(new Product(4,"UNO card     ",20,20));
-		menul.add(new Product(5,"Soft toy     ",30,400));
-		menul.add(new Product(6,"Towel        ",50,200));
-		menul.add(new Product(7,"Racing Car   ",40,1000));
-	}
-	/**
-	 * Displays the available items in the store
-	 */
-	public static void showMenu()
-	{
-		System.out.println("Product Id"+"\t\t"+"Name"+"\t\t\t\t\t\t"+"Price"+"\t\t\t"+"Available Quantity");
-		for(Product menu1:menul)
-		{
-			System.out.println(menu1.getProductid()+"\t\t  "+menu1.getProductname()+"\t\t\t\t\t\t"+menu1.getProductprice()+"\t\t\t"+menu1.getProductquantity());
-		}
-	}
-	/**
-	 * Used to update the remaining quantity of items in the store
-	 * @param productid indicates product id
-	 * @param productquantity indicates product quantity after updation of cart
-	 */
-	public static void updatedQuantity(int productid,int productquantity)
-	{
-		int availablequantity=menul.get(getIndexMenu(productid)).getProductquantity()-productquantity;
-		menul.get(getIndexMenu(productid)).setProductquantity(availablequantity);
-		if(availablequantity==0)
-			menul.remove(getIndexMenu(productid));
-	}
-	/**
-	 * Used to get the Index of the specified product id
-	 * @param productid indicates product id
-	 * @return return the index at which product id is found 
-	 * otherwise returns -1 with a message
-	 */
-	public static int getIndexMenu(int productid)
-	{
-		for (int i = 0; i < MenuList.menul.size(); i++)
-		{
-			Product index = (Product) MenuList.menul.get(i);
-			if (productid == index.getProductid()) 
-			{
-				return i;
-			}
-		}
-		return -1;
-	}
+public class MenuList 
+{
+    public static HashMap<String,Integer> temporaryMenuPrice=new HashMap<String,Integer>();
+    public static HashMap<String,Integer> temporaryMenuQuantity=new HashMap<String,Integer>();
+    public static HashMap<String,String> temporaryMenuProductName=new HashMap<String,String>();
+    /**
+     * Used to Add products in the store list
+     */
+    public static void addProductToMenu()
+    {
+        temporaryMenuProductName.put("1","Apple     ");
+        temporaryMenuProductName.put("2","Banana    ");
+        temporaryMenuProductName.put("3","Kiwi      ");
+        temporaryMenuProductName.put("4","Uno Card  ");
+        temporaryMenuProductName.put("5","Soft toy  ");
+        temporaryMenuProductName.put("6","Towel     ");
+        temporaryMenuProductName.put("7","Racing Car");
+        temporaryMenuPrice.put("1",80);
+        temporaryMenuPrice.put("2",30);
+        temporaryMenuPrice.put("3",50);
+        temporaryMenuPrice.put("4",20);
+        temporaryMenuPrice.put("5",400);
+        temporaryMenuPrice.put("6",200);
+        temporaryMenuPrice.put("7",1000);
+        temporaryMenuQuantity.put("1",20);
+        temporaryMenuQuantity.put("2",10);
+        temporaryMenuQuantity.put("3",20);
+        temporaryMenuQuantity.put("4",20);
+        temporaryMenuQuantity.put("5",30);
+        temporaryMenuQuantity.put("6",50);
+        temporaryMenuQuantity.put("7",40);
+    }
+    /**
+     * Displays the available items in the store
+     */
+    public static void showMenu()
+    {
+        System.out.println("Product Id"+"\t\t"+"Name"+"\t\t\t\t\t\t"+"Price"+"\t\t\t"+"Available Quantity");
+        int totalCartProducts=temporaryMenuQuantity.size();
+        Iterator<String> keyValues=temporaryMenuPrice.keySet().iterator();
+        for(int i=0;i<totalCartProducts;i++)
+        {
+            String productId=keyValues.next();
+            //System.out.println(cartvalue.getProductid()+"\t\t\t"+cartvalue.getProductname()+"\t\t\t\t\t"+cartvalue.getProductquantity()+"\t\t\t"+cartvalue.getProductprice());
+            System.out.println(productId+"\t\t\t"+temporaryMenuProductName.get(productId)+"\t\t\t\t\t"+temporaryMenuQuantity.get(productId)+"\t\t\t"+temporaryMenuPrice.get(productId));
+        }
+    }
+    /**
+     * Used to update the remaining quantity of items in the store
+     * @param productId indicates product id
+     * @param productQuantity indicates product quantity after updation of cart
+     */
+    public static void updatedQuantity(String productId,int productQuantity)
+    {
+        int availableQuantity=temporaryMenuQuantity.get(productId)-productQuantity;
+        temporaryMenuQuantity.replace(productId,availableQuantity);
+        if(availableQuantity==0)
+        {
+            temporaryMenuPrice.remove(productId);
+        }
+    }
 }
