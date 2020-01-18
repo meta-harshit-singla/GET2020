@@ -6,16 +6,16 @@ import java.util.Iterator;
  */
 public class CustCartMethods
 {
-    public HashMap<Integer,Integer> cartMapQuantity=new HashMap<Integer,Integer>();
-    public HashMap<Integer,Integer> cartMapPrice=new HashMap<Integer,Integer>();
-    public HashMap<Integer,String> cartMapProductName=new HashMap<Integer,String>();
+    public HashMap<String,Integer> cartMapQuantity=new HashMap<String,Integer>();
+    public HashMap<String,Integer> cartMapPrice=new HashMap<String,Integer>();
+    public HashMap<String,String> cartMapProductName=new HashMap<String,String>();
     /**
      * Used to add items in the cart
      * @param productId represents product id
      * @param productQuantity represents product quantity
      * @return whether the product was added or not
      */
-    boolean additems(int productId,int productQuantity) 
+    boolean additems(String productId,int productQuantity) 
     {
         if(MenuList.temporaryMenuPrice.containsKey(productId) && MenuList.temporaryMenuQuantity.get(productId)>=productQuantity)
         {
@@ -40,7 +40,7 @@ public class CustCartMethods
      * @param productId indicates product id
      * @return return whether the item is removed or not
      */
-    boolean removeitems(int productId)
+    boolean removeitems(String productId)
     {
         if(cartMapPrice.containsKey(productId))
         {
@@ -65,7 +65,7 @@ public class CustCartMethods
      * @param productQuantity represents the updated quantity 
      * @return whether the quantity has been changed or not
      */
-    boolean updateCart(int productId,int productQuantity)
+    boolean updateCart(String productId,int productQuantity)
     {
         if(cartMapPrice.containsKey(productId) && MenuList.temporaryMenuQuantity.get(productId)>=productQuantity)
         {
@@ -90,10 +90,10 @@ public class CustCartMethods
     {
         System.out.println("Product Id"+"\t\t"+"Name"+"\t\t\t\t\t\t"+"Quantity"+"\t\t"+"Price");
         int totalCartProducts=cartMapQuantity.size();
-        Iterator<Integer> keyValues=cartMapPrice.keySet().iterator();
+        Iterator<String> keyValues=cartMapPrice.keySet().iterator();
         for(int i=0;i<totalCartProducts;i++)
         {
-            int productId=keyValues.next();
+            String productId=keyValues.next();
             System.out.println(productId+"\t\t\t"+cartMapProductName.get(productId)+"\t\t\t\t\t"+cartMapQuantity.get(productId)+"\t\t\t"+cartMapPrice.get(productId));
         }
         System.out.println("\n\nTotal Price=Rs "+calculateTotalAmount());
@@ -105,11 +105,11 @@ public class CustCartMethods
     int calculateTotalAmount()
     {
         int totalPrice=0,cartSize=cartMapQuantity.size();
-        Iterator<Integer> keyValues=cartMapPrice.keySet().iterator();
+        Iterator<String> keyValues=cartMapPrice.keySet().iterator();
         while(cartSize>0)
         {
-            int pid=keyValues.next();
-            totalPrice+=cartMapPrice.get(pid)*cartMapQuantity.get(pid);
+            String productId=keyValues.next();
+            totalPrice+=cartMapPrice.get(productId)*cartMapQuantity.get(productId);
             cartSize--;
         }
         return totalPrice;
@@ -121,10 +121,10 @@ public class CustCartMethods
     {
         System.out.println("Product Id"+"\t\t"+"Name"+"\t\t\t\t\t\t"+"Quantity"+"\t\t"+"Price");
         int totalCartProducts=cartMapQuantity.size();
-        Iterator<Integer> keyValues=cartMapPrice.keySet().iterator();
+        Iterator<String> keyValues=cartMapPrice.keySet().iterator();
         for(int i=0;i<totalCartProducts;i++)
         {
-            int productId=keyValues.next();
+            String productId=keyValues.next();
             System.out.println(productId+"\t\t\t"+cartMapProductName.get(productId)+"\t\t\t\t\t"+cartMapQuantity.get(productId)+"\t\t\t"+cartMapPrice.get(productId));
         }
     }  
