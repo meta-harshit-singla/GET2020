@@ -37,7 +37,7 @@ public class ShoppingCart
                     System.out.println("Enter the id of the item you want to add with quantity:");
                     boolean flag=false;
                     String productId=s.nextLine();
-                    int productQuantity=s.nextInt();
+                    int productQuantity=Integer.parseInt(s.nextLine());
                     try
                     {
                         flag=cart.additems(productId,productQuantity);
@@ -58,7 +58,7 @@ public class ShoppingCart
                     cart.showCart();
                     System.out.println("Enter the item id with updated quantity");
                     String productsId=s.nextLine();
-                    int productsQuantity=s.nextInt();
+                    int productsQuantity=Integer.parseInt(s.nextLine());
                     boolean flag;
                     try
                     {
