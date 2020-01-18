@@ -152,12 +152,10 @@ public class JobScheduler
             for(int j=0;j<jobSchedulerInstance.colsize;j++)
             {
                 System.out.println("Enter the arrival time:");
-                arrivalTime=s.nextInt();
-                inputArr[i][j]=arrivalTime;
+                inputArr[i][j]=s.nextInt();
                 j++;
                 System.out.println("Enter the burst time:");
-                burstTime=s.nextInt();
-                inputArr[i][j]=burstTime;
+                inputArr[i][j]=s.nextInt();
             }
         }
          s.close();
