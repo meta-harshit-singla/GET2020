@@ -3,41 +3,30 @@ import java.util.ArrayList;
 public class ArrOperation
 {    
     /**
-     * Calculates the size of the largest mirror section found in the input array.Mirror section in an array is a group of contiguous elements such that somewhere in the array, the same group appears in reverse order
-     * @param localArray denotes the input array which is to be worked upon
-     * @return the size of the largest mirror section found in the input array
-     * @throws AssertionError
+     * @param inputArray 
+     * @return maxMirrorInArray which is number of max mirror element in array
+     * Dynamic Programming 
      */
-    public int maxMirror(int[] localArray) throws AssertionError
-    {
-        int i=0,j=0,copyOfIndexI=0,maxCount=0,count=0;
-        if(localArray.length==0)
+    public static int maxMirror(int[] inputArray) {
+        int sizeOfArray = inputArray.length;
+        int[][] positiveIntegerArray = new int[sizeOfArray + 1][sizeOfArray + 1];
+        int maxMirrorInArray = 0;
+        for (int outerIndex = 0; outerIndex <= sizeOfArray; outerIndex++) 
         {
-            throw new AssertionError("Array is empty");
-        }
-        while(i < localArray.length-1)
-        {
-            count=0;
-            copyOfIndexI=i;
-            j=localArray.length-1;
-            while(j >= 0)
+            for (int innerIndex = 0; innerIndex <= sizeOfArray; innerIndex++) 
             {
-                if(localArray[copyOfIndexI] == localArray[j])
+                if (outerIndex == 0 || innerIndex == 0)
+                    positiveIntegerArray[outerIndex][innerIndex] = 0;
+                else if (inputArray[outerIndex - 1] == inputArray[sizeOfArray - innerIndex]) 
                 {
-                    count++;
-                    copyOfIndexI++;
+                    positiveIntegerArray[outerIndex][innerIndex] = positiveIntegerArray[outerIndex - 1][innerIndex - 1] + 1;
+                    maxMirrorInArray = Math.max(maxMirrorInArray, positiveIntegerArray[outerIndex][innerIndex]);
                 }
-                else if(count > 0) 
-                {
-                    break;
-                }
-                if(maxCount < count) 
-                    maxCount=count;
-                j--;
+                else
+                    positiveIntegerArray[outerIndex][innerIndex] = 0;
             }
-            i++;
         }
-        return maxCount;
+        return maxMirrorInArray;
     }
     /**
      * Calculates the number of clumps in the input array.
