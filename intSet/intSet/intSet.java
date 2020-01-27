@@ -102,11 +102,7 @@ public class intSet
                     break;
                 }
             }
-            if(flag)
-            {
-                flag=true;
-            }
-            else
+            if(!flag)
                 break;
         }
         return flag;
@@ -122,14 +118,10 @@ public class intSet
         int c=-1;
         for(int i=0;i<universalSet.length;i++)
         {
-            flag=false;
+            flag=true;
             for(int j=0;j<arraySet.length;j++)
             {
-                if(universalSet[i]!=arraySet[j])
-                {
-                    flag=true;
-                }
-                else 
+                if(universalSet[i]==arraySet[j])
                 {
                     flag=false;
                     break;
@@ -155,7 +147,7 @@ public class intSet
             {
                 if(s1.arraySet[i]==s2.arraySet[j])
                 {
-                   count++;
+                    count++;
                 }
             }
         }  
