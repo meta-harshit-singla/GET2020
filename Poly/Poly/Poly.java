@@ -84,17 +84,13 @@ public class Poly
         int poly2Coefficient[] = p2.coefficient;
         int largePoly[] = poly1Coefficient.length > poly2Coefficient.length ? poly1Coefficient: poly2Coefficient;
         int smallPoly[] = poly1Coefficient.length < poly2Coefficient.length ? poly1Coefficient: poly2Coefficient;
-        for (int smallPolyIndex = smallPoly.length - 1; smallPolyIndex >= 0; smallPolyIndex--) {
-            for (int largePolyIndex = largePoly.length - 1; largePolyIndex >= 0; largePolyIndex--) {
-                multipliedPoly[smallPolyIndex + largePolyIndex] = multipliedPoly[smallPolyIndex+largePolyIndex]+smallPoly[smallPoly.length - smallPolyIndex - 1]* largePoly[largePoly.length - largePolyIndex - 1];
+        for(int smallPolyIndex=0;smallPolyIndex<smallPoly.length;smallPolyIndex++)
+        {
+            for(int largePolyIndex=0;largePolyIndex<largePoly.length;largePolyIndex++)
+            {
+                multipliedPoly[largePolyIndex+smallPolyIndex]+=smallPoly[smallPolyIndex]*largePoly[largePolyIndex];
             }
         }
-        // reversing the array
-        int tempArray[] = new int[multipliedPoly.length];
-        for (int i = 1; i <= multipliedPoly.length; i++) {
-            tempArray[i - 1] = multipliedPoly[multipliedPoly.length - i];
-        }
-        multipliedPoly = tempArray;
         return multipliedPoly;
     }
     void print()
