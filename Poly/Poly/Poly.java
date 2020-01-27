@@ -63,19 +63,13 @@ public class Poly
         int poly2Coeffecient[] = p2.coefficient;
         int largePoly[] = poly1Coeffecient.length > poly2Coeffecient.length ? poly1Coeffecient: poly2Coeffecient;
         int smallPoly[] = poly1Coeffecient.length < poly2Coeffecient.length ? poly1Coeffecient: poly2Coeffecient;
-        int distinct=largePoly.length-smallPoly.length;
-        int addPoly[]=new int[largePoly.length];
-        int index=0;
-        for(index=0;index<distinct;index++)
+        for(int index=largePoly.length-smallPoly.length-1;index<smallPoly.length;index++)
         {
-            addPoly[index]=largePoly[index];
+            int distinct=largePoly.length-smallPoly.length;
+            largePoly[distinct]+=smallPoly[index];
+            distinct++;
         }
-        while(index<largePoly.length)
-        {
-            addPoly[index]=smallPoly[index-distinct]+largePoly[index];
-            index++;
-        }
-        return addPoly;
+        return largePoly;
     }
     /**
      * Multiplying two polynomials
