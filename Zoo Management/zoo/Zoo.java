@@ -107,10 +107,7 @@ public class Zoo
         if(Zoo.zonesInZoo.containsKey(zone.zoneId))
         {
             boolean cagePlaced = zone.addCage(cage);
-            if(cagePlaced)
-            { 
-                return true; 
-            }
+            return cagePlaced;
         }	
         return false;
     }
@@ -138,6 +135,7 @@ public class Zoo
                 if(cage.cageSpecies == animal.species)
                 {
                     cage.removeAnimalFromCage(animal);
+                    break;
                 }
             }
             Zoo.animalsInZoo.remove(animal.uniqueName);	
