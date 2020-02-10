@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Student Details</title>
+</head>
+<body>
+	<form action="AddStudentServlet" method="post">
+		<label>
+			<fieldset>
+				<legend>First Name</legend>
+				<input type="text" placeholder="First name" name="firstName"><br>
+			</fieldset>
+		</label> <label>
+			<fieldset>
+				<legend>Last Name</legend>
+				<input type="text" placeholder="Last name" name="secondName"><br>
+			</fieldset>
+		</label> <label>
+			<fieldset>
+				<legend>Father's Name</legend>
+				<input type="text" placeholder="Father's name" name="fatherName"><br>
+			</fieldset>
+		</label> <label>
+			<fieldset>
+				<legend>Email-id</legend>
+				<input type="email" placeholder="Email-id" name="emailId"><br>
+			</fieldset>
+		</label> <label>
+			<fieldset>
+				<legend>Class</legend>
+				<select id="class" name="class">
+					<option value="1" selected="true">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select><br />
+			</fieldset>
+		</label> <label>
+			<fieldset>
+				<legend>Age</legend>
+				<input type="text" placeholder="Age" name="age"><br>
+			</fieldset>
+		</label> <input type="submit" value="Submit">
+	</form>
+</body>
+</html>
