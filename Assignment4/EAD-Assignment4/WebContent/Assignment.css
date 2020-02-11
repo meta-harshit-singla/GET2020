@@ -1,0 +1,132 @@
+@CHARSET "ISO-8859-1";
+
+h1 {
+	text-align: center;
+}
+
+legend {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+label {
+	text-align: left;
+	font-weight: bold;
+	color: text;
+}
+
+form {
+	margin-left: 400px;
+	width: 500px;
+	text-align: center;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=tel],
+	input[type=""] {
+	width: 50%;
+	padding: 10px;
+	margin: 15px;
+	border: 2px solid orange;
+	border-radius: 15px;
+	outline-color: orange;
+	/* outline-offset: 15px; */
+}
+
+h2 {
+	text-align: center;
+}
+
+#msg {
+	color: red;
+}
+
+select {
+	width: 50%;
+	padding: 10px;
+	margin: 15px;
+	border: 2px solid orange;
+	border-radius: 15px;
+}
+
+option {
+	background: sandybrown;
+	color: rgb(10, 245, 174);
+	width: 50px;
+}
+
+textarea {
+	border: 2px solid orange;
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 300px;
+	margin: auto;
+	text-align: center;
+	font-family: arial;
+}
+
+.price {
+	color: grey;
+	font-size: 15px;
+}
+
+input[type=button] {
+	border: none;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	color: orange;
+	background-color: #000;
+	text-align: center;
+	cursor: pointer;
+	width: 8rem;
+	height: 40px;
+	font-size: 14px;
+	border-radius: 2rem;
+}
+
+.cardButton:hover {
+	opacity: 0.7;
+}
+
+.flex-container {
+	display: flex;
+}
+
+.passhead {
+	font-size: 16px;
+}
+
+
+#special{
+color:orange;
+display:inline;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:#f0ede9;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #9e7744;
+}
+
+.active {
+  background-color: Orange;
+}

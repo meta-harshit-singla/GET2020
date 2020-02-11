@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Metacube Parking</title>
+<link rel="stylesheet" type="text/css" href="Assignment.css">
+<script>
+	function successfulRegistration() {
+		//var url  = window.location.href;
+		//var search_params = new URLSearchParams(url.search); 
+		//console.log(search_params.key);
+		// initialize an empty object
+		let
+		result = {};
+		// get URL query string
+		let
+		params = window.location.search;
+		// remove the '?' character
+		params = params.substr(1);
+		// split the query parameters
+		let
+		queryParamArray = params.split('&amp;');
+		// iterate over parameter array
+		queryParamArray.forEach(function(queryParam) {
+			// split the query parameter over '='
+			let
+			item = queryParam.split('=');
+			result[item[0]] = decodeURIComponent(item[1]);
+		});
+		// print result object
+		if (result.id == 1) {
+			document.getElementById("msg").innerHTML = "Invalid username and password";
+
+			//document.getElementById("msg").innerHtml="Invalid username and password";
+		}
+	}
+</script>
+</head>
+<body>
+</head>
+<body>
+	<div>
+		<ul>
+			<h1 id="special" style="padding: 2rem;">
+				<b>Metacube Parking 
+			</h1>
+		</ul>
+	</div>
+	<br>
+	<div>
+		<form action="login" method="post">
+			<fieldset>
+				<legend>Login</legend>
+
+				<span id="msg" style="color: red;"></span><br> <label>E-Mail<input
+					type="email" name="email" id="email" placeholder="abc@gmail.com"
+					required></label><br /> <label>Password<input
+					type="password" name="password" id="pass" required></label><br />
+				<input type="submit"
+					style="border: none; margin: 0; outline: 0; padding: 0; color: orange; background-color: #000; text-align: center; cursor: pointer; width: 8rem; height: 40px; font-size: 14px; border-radius: 2rem;"
+					value="Login" onclick="successfulRegistration()">
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
