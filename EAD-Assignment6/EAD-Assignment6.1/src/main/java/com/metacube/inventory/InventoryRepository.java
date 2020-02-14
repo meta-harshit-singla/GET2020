@@ -45,24 +45,27 @@ public class InventoryRepository
     public List<Inventory> replaceitem(String replacingItem, Inventory replacedItem)
     {
         Inventory item1 = null;
+        int index = 0;
         for (Inventory item : items)
         {
             if (replacingItem.equalsIgnoreCase(item.getName()))
             {
                 item1 = item;
+                break;
             }
+            index++;
         }
         if (item1 != null)
         {
-            items.remove(item1);
-            items.add(replacedItem);
-        }
+            items.set(index, replacedItem);
+        } else
+            System.out.println("Element Not Found");
         return items;
     }
 
     public String deleteAllItems()
     {
-        items.removeAll(items);
+        items.clear();
         return "Deleted";
     }
 
@@ -74,13 +77,14 @@ public class InventoryRepository
             if (deleteName.equalsIgnoreCase(item.getName()))
             {
                 item1 = item;
+                break;
             }
         }
         if (item1 != null)
         {
             items.remove(item1);
-        }
+        } else
+            System.out.println("Element Not Found");
         return items;
     }
-
 }
