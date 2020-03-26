@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Metacube Parking</title>
+    <link rel="stylesheet" href="UI-Assignment7.css">
+    <script src="UI-Assignment7.js"></script>
+</head>
+
+<body>
+    <div class="MainPage">
+        <div class="EmployeeDetails" id="FullName">
+            <input class="textField" type="text" id="name" placeholder="Full Name"
+                title="Name should contain atleast two alphabets" required>
+            <input class="button" type="button" value="Next" onclick="isNameValidate()">
+        </div>
+        <div class="EmployeeDetails" id="gender" style="display: none;">
+            <div style="display:flex;justify-content: center;">
+                <label><input type="radio" name="gender" value="Male" checked>Male<br /></label>
+                <label><input type="radio" name="gender" value="Female">Female<br /></label>
+                <label><input type="radio" name="gender" value="Other">Other<br /></label>
+            </div>
+            <div style="display:flex;justify-content: center;">
+                <input class="button" type="button" value="Next" onclick="nextDetails()">
+            </div>
+        </div>
+        <div class="EmployeeDetails" id="email" style="display: none;">
+            <input class="textField" id="email-id" type="email" placeholder="Email-id" required>
+            <input class="button" type="button" value="Next" onclick="isEmailValidate()">
+        </div>
+        <div class="EmployeeDetails" id="password" style="display: none;">
+            <input class="textField" id="employeePassword" type="password" placeholder="password"
+                title="should contain atleast one Uppercase, Lowercase, Numeric and Alphabet character.Password should be atleast 8 words long"
+                onchange="isPasswordValidate()" required><br>
+            <input class="textField" id="employeeConfirmPassword" type="password" placeholder="Confirm password"
+                onkeyup="isConfirmPasswordMatchValidation()" required>
+            <input class="button" type="button" id="next" value="Next" onclick="nextContactNumber()">
+        </div>
+        <div class="EmployeeDetails" id="contact" style="display: none;">
+            <input class="textField" id="employeeContact" type="tel" placeholder="mobile number" required>
+            <input class="button" id="submitButton" type="submit" value="Submit" onclick="isContactNumberValidate()">
+        </div>
+
+        <div class="CarDetails" id="EmployeeCarName" style="display: none;">
+            <input class="textField" type="text" id="carName" placeholder="Vehicle Name" required>
+            <input class="button" type="button" value="Next" onclick="isVehicleNameEntered()">
+        </div>
+
+        <div class="CarDetails" id="EmployeeCarType" style="display: none;">
+            <select id="VehicleType">
+                <option selected="true" value="NoSelection" disabled> Select vehicle type </option>
+                <option value="Bicycle">Bicycle</option>
+                <option value="Two-Wheeler">Two-Wheeler</option>
+                <option value="Four-Wheeler">Four-Wheeler</option>
+            </select>
+            <input class="button" type="button" id="nextType" value="Next" onclick="isVehicleTypeEntered()">
+        </div>
+
+        <div class="CarDetails" id="EmployeeCarNumber" style="display: none;">
+            <input class="textField" type="text" id="carNumber" placeholder="Vehicle Number"
+                onkeyup="vehicleNumberValidate()">
+            <input class="button" type="button" id="nextNumber" value="Next" onclick="goToIdentification()">
+        </div>
+
+        <div class="CarDetails" id="EmployeeCarIdentification" style="display: none;">
+            <textarea name="Vehicle description" id="vehicleDesc" cols="30" rows="3"></textarea>
+            <input class="button" id="buttonSubmit" type="submit" value="submit" onclick="registerVehicle()">
+        </div>
+
+        <div id="BicycleDivision" style="display: none;">
+            <select id="Currency1" onchange="currencyConverter1()">
+                <option value="NoSelection" disabled>Currency</option>
+                <option value="INR" selected="true"> INR </option>
+                <option value="YEN">YEN</option>
+                <option value="USD">USD</option>
+            </select><br />
+            <div style="display: flex; justify-content: space-around;">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Daily</h2>
+                            <img src="C:\Users\Harshit\Downloads\bicycle.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="dailyBicycle">&#8377 5</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('dailyBicycle','BicycleDivision')">
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Monthly</h2>
+                            <img src="C:\Users\Harshit\Downloads\bicycle.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="monthlyBicycle">&#8377 100</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('monthlyBicycle','BicycleDivision')">
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Yearly</h2>
+                            <img src="C:\Users\Harshit\Downloads\bicycle.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="yearlyBicycle">&#8377 500</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('yearlyBicycle','BicycleDivision')">
+                </div>
+            </div>
+        </div>
+        <div id="TwoWheelerDivision" style="display: none;">
+            <select id="Currency3" onchange="currencyConverter3()">
+                <option value="NoSelection" disabled>Currency</option>
+                <option value="INR" selected="true"> INR </option>
+                <option value="YEN">YEN</option>
+                <option value="USD">USD</option>
+            </select><br />
+            <div style="display: flex; justify-content: space-around;" style="display: none;">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Daily</h2>
+                            <img src="C:\Users\Harshit\Downloads\two-wheeler.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="dailyTwoWheeler">&#8377 20</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('dailyTwoWheeler','TwoWheelerDivision')">
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Monthly</h2>
+                            <img src="C:\Users\Harshit\Downloads\two-wheeler.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="monthlyTwoWheeler">&#8377 500</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('monthlyTwoWheeler','TwoWheelerDivision')">
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Yearly</h2>
+                            <img src="C:\Users\Harshit\Downloads\two-wheeler.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="yearlyTwoWheeler">&#8377 3500</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('yearlyTwoWheeler','TwoWheelerDivision')">
+                </div>
+            </div>
+        </div>
+
+        <div id="FourWheelerDivision" style="display: none;">
+            <select id="Currency2" onchange="currencyConverter2()">
+                <option value="NoSelection" disabled>Currency</option>
+                <option value="INR" selected="true"> INR </option>
+                <option value="YEN">YEN</option>
+                <option value="USD">USD</option>
+            </select><br />
+            <div style="display: flex; justify-content: space-around;" style="display: none;">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Daily</h2>
+                            <img src="C:\Users\Harshit\Downloads\car.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="dailyCar">&#8377 10</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('dailyCar','FourWheelerDivision')">
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Monthly</h2>
+                            <img src="C:\Users\Harshit\Downloads\car.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="monthlyCar">&#8377 200</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('monthlyCar','FourWheelerDivision')">
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Yearly</h2>
+                            <img src="C:\Users\Harshit\Downloads\car.jpg" alt="Avatar"
+                                style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h2>Price</h2>
+                            <p id="yearlyCar">&#8377 1000</p>
+                        </div>
+                    </div>
+                    <input class="button" type="button" value="Get Pass" style="margin-top: 80px;"
+                        onclick="finalPrice('yearlyCar','FourWheelerDivision')">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
